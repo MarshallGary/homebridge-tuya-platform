@@ -14,9 +14,9 @@ export default class TemperatureHumiditySensorAccessory extends BaseAccessory {
       service.getCharacteristic(this.Characteristic.CurrentTemperature)
         .onGet(() => {
           const status = this.device.getDeviceStatus('va_temperature');
-          let temperature = Math.max(-270, status!.value as number);
-          temperature = Math.min(100, temperature);
-          return temperature;
+          let temperature = Math.max(-400, status!.value as number);
+          temperature = Math.min(1000, temperature);
+          return temperature/10;
         });
 
     }
